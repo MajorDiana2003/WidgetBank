@@ -1,6 +1,8 @@
-from src.masks import  get_mask_account
-from src.masks import get_mask_card_number
 from datetime import datetime
+
+from src.masks import get_mask_account, get_mask_card_number
+
+
 def mask_account_card(num_for_mask: str) -> str:
     """Функция маскирует номер карты или счета"""
     num_for_mask_split = num_for_mask.split()
@@ -21,9 +23,8 @@ def mask_account_card(num_for_mask: str) -> str:
 
 def get_date(date_inp: str) -> str:
     """Функция, которая принимает на вход строку и возвращает строку с датой."""
-    date = datetime.strptime(date_inp[:10], '%Y-%m-%d')
+    date = datetime.strptime(date_inp[:10], "%Y-%m-%d")
     return f"{date.day:02}.{date.month:02}.{date.year}"
-
 
 
 print(mask_account_card("Maestro 1596837868705199"))
