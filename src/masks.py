@@ -32,7 +32,3 @@ def get_mask_account(card_account: str) -> str:
     card_account = card_account.replace(" ", "")
     last_part = str(card_account[-4:])
     return f"**{last_part}"
-
-
-print(get_mask_card_number(card_number="1234566789900009"))
-print(get_mask_account(card_account="73654108430135874305"))
