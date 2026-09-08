@@ -2,8 +2,11 @@ def get_mask_card_number(card_number: str) -> str:
     """Функция маскировки номера банковской карты"""
     card_number = card_number.replace(" ", "")
     # проверяем хватает цифр в номере карты
-    if len(card_number) != 16:
-        return "Введен неверный номер карты"
+    if not card_number:
+        raise ValueError("Введен неверный номер карты: ")
+
+    if len(card_number) != 16 or not card_number.isdigit():
+        raise ValueError(f"Введена неверная длина номера карты: {card_number}")
 
     result = []  # список для хранения замаскированного номера карты
     counter = 0  # счетчик цифр в номере карты,
@@ -30,5 +33,13 @@ def get_mask_card_number(card_number: str) -> str:
 def get_mask_account(card_account: str) -> str:
     """Функция маскировки номера банковского счета"""
     card_account = card_account.replace(" ", "")
-    last_part = str(card_account[-4:])
-    return f"**{last_part}"
+
+    if not card_account:
+        return f"Введен неверный номер счета: {card_account}"
+
+    if len(card_account) != 20:
+        return f"Введена неверная длинна номера счета: {card_account}"
+
+    else:
+        last_part = str(card_account[-4:])
+        return f"**{last_part}"

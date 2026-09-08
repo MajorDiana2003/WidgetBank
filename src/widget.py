@@ -5,9 +5,15 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(num_for_mask: str) -> str:
     """Функция маскирует номер карты или счета"""
+    if not num_for_mask:
+        raise ValueError("Введен неверный номер карты: ")
+
+    if not any(c.isalpha() for c in num_for_mask):
+        raise ValueError("Не указан тип карты или счета")
+
     num_for_mask_split = num_for_mask.split()
     if "Счет" in num_for_mask_split:
-        return f"Cчет {get_mask_account(num_for_mask_split[1])}"
+        return f"Счет {get_mask_account(num_for_mask_split[1])}"
     else:
         card_num = []
         card_name = []
