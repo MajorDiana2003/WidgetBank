@@ -4,17 +4,6 @@ import pytest
 from src.processing import filter_by_state, sort_by_date
 
 
-# Фикстура с базовыми данными для тестирования обеих функций
-@pytest.fixture
-def sample_data():
-    return [
-        {"id": 1, "state": "EXECUTED", "date": "2024-03-11T16:00:00.123456"},
-        {"id": 2, "state": "CANCELED", "date": "2024-03-12T11:59:59.999999"},
-        {"id": 3, "state": "EXECUTED", "date": "2024-03-10T09:15:30.000000"},
-        {"id": 4, "state": "PENDING", "date": "2024-03-15T00:00:00.000000"},
-    ]
-
-
 @pytest.mark.parametrize(
     "state, expected_ids",
     [
