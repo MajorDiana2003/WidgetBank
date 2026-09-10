@@ -48,7 +48,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-cover/
+
 
 # Translations
 *.mo
@@ -171,3 +171,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Тестовые логи проекта
+test_log.txt
