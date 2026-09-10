@@ -1,5 +1,4 @@
 import pytest
-
 from src.widget import get_date, mask_account_card
 
 
@@ -13,7 +12,7 @@ from src.widget import get_date, mask_account_card
         ("Счет 64686473678894779589", "Счет **9589"),
     ],
 )
-def test_mask_account_card(card_or_account, expected):
+def test_mask_account_card(card_or_account: str, expected: str) -> None:
     """Тестирование корректного маскирования карты или счета"""
     assert mask_account_card(card_or_account) == expected
 
@@ -26,7 +25,7 @@ def test_mask_account_card(card_or_account, expected):
         ("1234567890123456", "Не указан тип карты или счета"),
     ],
 )
-def test_mask_account_card_invalid(invalid_input, expected_output):
+def test_mask_account_card_invalid(invalid_input: str, expected_output: str) -> None:
     """Тестирование некорректного маскирования карты или счета"""
     with pytest.raises(ValueError) as exc_info:
         mask_account_card(invalid_input)
@@ -42,6 +41,6 @@ def test_mask_account_card_invalid(invalid_input, expected_output):
         ("2026-01-09", "09.01.2026"),
     ],
 )
-def test_get_date(date_str, expected):
+def test_get_date(date_str: str, expected: str) -> None:
     """Тестирование корректного форматирования даты"""
     assert get_date(date_str) == expected
