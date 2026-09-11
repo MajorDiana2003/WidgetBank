@@ -174,3 +174,7 @@ cython_debug/
 
 # Тестовые логи проекта
 test_log.txt
+
+# Логи разработки
+logs/
+*.log
