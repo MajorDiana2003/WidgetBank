@@ -8,6 +8,8 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "requests (>=2.34.2,<3.0.0)",
+    "python-dotenv (>=1.2.3,<2.0.0)"
 ]
 
 
@@ -17,6 +19,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.group.dev.dependencies]
 requests = "^2.32.3"
+pytest-cov = "^7.1.0"
 
 
 [tool.poetry.group.lint.dependencies]
