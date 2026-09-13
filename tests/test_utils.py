@@ -1,6 +1,5 @@
 import json
 import logging
-
 from unittest.mock import mock_open, patch
 
 from _pytest.logging import LogCaptureFixture
