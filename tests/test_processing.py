@@ -2,7 +2,7 @@ from typing import Any, List
 
 import pytest
 
-from src.processing import filter_by_state, sort_by_date
+from src.processing import filter_by_state, process_bank_operations, process_bank_search, sort_by_date
 
 
 @pytest.mark.parametrize(
@@ -54,6 +54,30 @@ def test_sort_by_date_ascending(sample_data: List[Any]) -> None:
     assert result_ids == [3, 1, 2, 4]
 
 
-def test_sort_by_date_empty_list() -> None:
+def test_sort_by_date_empty(sample_data: List[Any]) -> None:
     """Проверка сортировки пустого списка"""
     assert sort_by_date([]) == []
+
+
+def test_process_bank_search_success(sample_data: list[dict[str, Any]]) -> None:
+    """Тест успешного поиска операций по слову"""
+    result = process_bank_search(sample_data, "Перевод")
+    assert isinstance(result, list)
+
+
+def test_process_bank_search_empty() -> None:
+    """Тест поиска с пустым списком"""
+    assert process_bank_search(data=[], search="Перевод") == []
+
+
+def test_process_bank_operations_success(sample_data: list[dict[str, Any]]) -> None:
+    """Тест успешного подсчета операций по категориям"""
+    categories = ["Перевод организации", "Покупка"]
+    result = process_bank_operations(sample_data, categories)
+    assert isinstance(result, dict)
+    assert "Перевод организации" in result
+
+
+def test_process_bank_operations_empty(sample_data: list[dict[str, Any]]) -> None:
+    """Тест подсчета с пустым списком"""
+    assert process_bank_operations(data=[], categories=["Покупка"]) == {"Покупка": 0}
